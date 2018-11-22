@@ -1,44 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+le# petclinic
 
-## Available Scripts
+1. Pour la base de données, dans le cmd :
 
-In the project directory, you can run:
+`docker pull mysql:5.6`
 
-### `npm start`
+`docker run --name petclinic -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.6`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Via mysql workbench : créer un user petclinic:petclinic et créer un schema liquibase_petclinic
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+2. Pour installer le tout (dans visual studio code) : 
 
-### `npm test`
+`$ gradle build`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Rentrer dans petclinic-react
 
-### `npm run build`
+`$ npm install`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`$npm install --save reactstrap react react-dom`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+`$ yarn add react-router`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`$ yarn add react-router-dom`
 
-### `npm run eject`
+`$ yarn add axios`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`$ npm start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ouvrir un deuxième prompt de commande
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`$ gradle dev update`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`$ gradle bootrun`
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
