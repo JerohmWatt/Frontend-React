@@ -6,6 +6,7 @@ import OwnerFindPage from './components/OwnerFind/OwnerFindPage';
 import VetsPage from './components/Vets/VetsPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Menu from './components/Menu/Menu'
+import OwnerListPage from './components/OwnerFind/OwnerListPage';
 
 export default () => 
 (<BrowserRouter>
@@ -17,6 +18,7 @@ export default () =>
             <Route path="/vets" component={VetsPage} />
             <Route path="/error" component={ErrorPage} />
             <Route component={ErrorPage} />
+            <Route path="/owners/list" component={OwnerListPage} />
         </Switch>
     </div>
 </BrowserRouter>

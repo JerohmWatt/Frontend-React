@@ -19,10 +19,11 @@ export default class VetsPage extends Component {
       //console.log(response)
       response.data.forEach(vet => {
         vets.push(
-          <Vet key={vet.lastname} {...vet}/>
+          <Vet key={vet.lastName} {...vet}/>
         )
+        console.log(vets)
       });
-      console.log(vets)
+      
       this.setState({vets})
     })
   }

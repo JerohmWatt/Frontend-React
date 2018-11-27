@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Vet = ({lastname,firstname,speciality}) => {
+const Vet = ({lastName,firstName,specialty}) => {
   return (
       <tr>
-        <td>{lastname + ' ' + firstname}</td>
-        <td>{speciality}</td>
+        <td>{lastName + ' ' + firstName}</td>
+        <td>{specialty}</td>
       </tr>
   )
 }
