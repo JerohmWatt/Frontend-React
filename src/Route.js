@@ -17,8 +17,8 @@ export default () =>
             <Route path="/owners/find" component={OwnerFindPage} />
             <Route path="/vets" component={VetsPage} />
             <Route path="/error" component={ErrorPage} />
-            <Route component={ErrorPage} />
             <Route path="/owners/list" component={OwnerListPage} />
+            <Route component={ErrorPage} />
         </Switch>
     </div>
 </BrowserRouter>

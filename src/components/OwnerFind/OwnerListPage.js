@@ -1,51 +1,50 @@
-/* 
 import axios from 'axios' 
-import Vet from './Owner' #modif ok
+import Owner from './Owner' //
 import React, { Component } from 'react'
 
-export default class VetsPage extends Component {
+export default class OwnerListPage extends Component { 
+  state = { owners:[] } //
 
-
-  state = { owners:[] } #def tableau d'owners
-
-  getVets = async() => {
-    const response = await axios.get('http://localhost:9999/api/v1/vets') #recup d'owners, manque aussi pour pets
+  getOwners = async() => {
+    const response = await axios.get('http://localhost:9999/api/v1/owners')
     return await response
   }
 
-  setVets = () => {
-    this.getVets()
+  setOwners = () => {
+    this.getOwners ()
     .then((response) => {
-      let vets = []
-      //console.log(response)
-      response.data.forEach(vet => {
-        vets.push(
-          <Vet key={vet.lastname} {...vet}/>
+      let owners = []
+      console.log(response)
+      response.data.forEach(owner => {
+        owners.push(
+          <Owner key={owner.lastname} {...owner}/>
         )
       });
-      console.log(vets)
-      this.setState({vets})
+      console.log(owners)
+      this.setState({owners})
     })
   }
-
-  componentWillMount() {
-    this.setVets()
+  componentDidMount() {
+    console.log("ca marche");
+    this.setOwners()
   }
 
   render() {
     return (
       <div className="Content">
       <div className="container xd-container">
-        <h2>Veterinarians</h2>
+        <h2>Owners</h2>
         <table className="table table-striped">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Specialties</th>
+                <th>Address</th>
+                <th>Telephone</th>
+                <th>Pets</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.vets}
+              {this.state.owners}
             </tbody>
         </table>
       </div>
@@ -53,4 +52,4 @@ export default class VetsPage extends Component {
     )
   }
 }
-*/
+
