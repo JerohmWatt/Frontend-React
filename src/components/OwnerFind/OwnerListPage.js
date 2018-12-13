@@ -3,11 +3,29 @@ import Owner from './Owner' //
 import React, { Component } from 'react'
 
 export default class OwnerListPage extends Component { 
+  constructor() {
+    super();
+    this.state = {
+      lastname : "",
+    }
+  }
+
+
+
   state = { owners:[] } //
 
   getOwners = async() => {
+    
+    console.log(this.props.match);
+    if (this.props.match.params.id === undefined){
+      console.log("vide");
     const response = await axios.get('http://localhost:9999/api/v1/owners')
     return await response
+    } else {
+      console.log("franklin lol");
+    const response = await axios.get('http://localhost:9999/api/v1/owners/"'+ this.props.match.params.id + '"')
+    return await response}
+    
   }
 
   setOwners = () => {
@@ -26,10 +44,12 @@ export default class OwnerListPage extends Component {
   }
   componentDidMount() {
     console.log("ca marche");
+    
     this.setOwners()
   }
 
   render() {
+    console.log(this.props.match.params.id);
     return (
       <div className="Content">
       <div className="container xd-container">
