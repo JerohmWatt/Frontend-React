@@ -1,28 +1,21 @@
 import axios from 'axios' 
 import Owner from './Owner' //
 import React, { Component } from 'react'
+import { InputGroup, InputGroupText, InputGroupAddon, Input, Card, Button, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 export default class OwnerListPage extends Component { 
-  constructor() {
-    super();
-    this.state = {
-      lastname : "",
-    }
-  }
-
-
-
+  
   state = { owners:[] } //
 
   getOwners = async() => {
     
     console.log(this.props.match);
     if (this.props.match.params.id === undefined){
-      console.log("vide");
+      // if no lastname input
     const response = await axios.get('http://localhost:9999/api/v1/owners')
     return await response
     } else {
-      console.log("franklin lol");
+    //if user enter lastname
     const response = await axios.get('http://localhost:9999/api/v1/owners/"'+ this.props.match.params.id + '"')
     return await response}
     
@@ -43,15 +36,16 @@ export default class OwnerListPage extends Component {
     })
   }
   componentDidMount() {
-    console.log("ca marche");
-    
     this.setOwners()
   }
 
   render() {
-    console.log(this.props.match.params.id);
     return (
-      <div className="Content">
+      <div id="parent">
+      <Breadcrumb>
+      <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+      <BreadcrumbItem active>Owners list</BreadcrumbItem>
+    </Breadcrumb>
       <div className="container xd-container">
         <h2>Owners</h2>
         <table className="table table-striped">
@@ -69,6 +63,7 @@ export default class OwnerListPage extends Component {
         </table>
       </div>
       </div>
+    
     )
   }
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Vet from './Vet'
 import React, { Component } from 'react'
+import { InputGroup, InputGroupText, InputGroupAddon, Input, Card, Button, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 export default class VetsPage extends Component {
 
@@ -34,6 +35,11 @@ export default class VetsPage extends Component {
 
   render() {
     return (
+      <div id="parent">
+      <Breadcrumb>
+      <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+      <BreadcrumbItem active>Veterinarians list</BreadcrumbItem>
+    </Breadcrumb>
       <div className="Content">
       <div className="container xd-container">
         <h2>Veterinarians</h2>
@@ -48,6 +54,7 @@ export default class VetsPage extends Component {
               {this.state.vets}
             </tbody>
         </table>
+      </div>
       </div>
       </div>
     )

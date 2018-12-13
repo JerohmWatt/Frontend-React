@@ -1,4 +1,4 @@
-import { InputGroup, InputGroupText, InputGroupAddon, Input, Card, Button, Row, Col } from 'reactstrap';
+import { InputGroup, InputGroupText, InputGroupAddon, Input, Card, Button, Row, Col, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import React, { Component } from 'react';
 
 
@@ -8,26 +8,31 @@ export default class OwnerFindPage extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
-
     this.handleChange = this.handleChange.bind(this);
     this.lastName = this.lastName.bind(this);
   }
 
-  handleChange(event) {
+  //when change on textbox, update value
+  handleChange(event) { 
     this.setState({value: event.target.value});
   }
 
+  //exec when user click on button
   lastName() {
     var lastname = this.state.value;
-    alert(lastname);
   }
 
  
   render() {
     return (
-      
+      <div id="parent">
+      <Breadcrumb>
+      <BreadcrumbItem><a href="/">Home</a></BreadcrumbItem>
+      <BreadcrumbItem active>Find Owners</BreadcrumbItem>
+    </Breadcrumb>
 
     <div className="Content">
+
     <Row>
       <Col sm="12" md={{ size: 6, offset: 3 }}>
         <Card body>
@@ -48,6 +53,7 @@ export default class OwnerFindPage extends Component {
       <div class="col-md-8 col-md-offset-6"> 
   <a href="/owners/add"><Button color="success" size="lg">Add owner</Button>{' '}</a>
   </div> 
+  </div>
   </div>
 )}}
 
