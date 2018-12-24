@@ -1,29 +1,38 @@
 import axios from 'axios' 
 import Owner from './Owner' //
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, FormText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { InputGroup, InputGroupText, InputGroupAddon, Button, Form, FormGroup, Label, Input, FormText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Route, Redirect } from 'react-router'
 
 export default class OwnerListPage extends Component { 
   
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {firstname: '', lastname: '', address : '', city: '', address: ''};
         this.handleChange = this.handleChange.bind(this);
-        this.lastName = this.lastName.bind(this);
       }
     
       //when change on textbox, update value
-      handleChange(event) { 
-        this.setState({value: event.target.value});
+      handleChange = input => event => { 
+        console.log("change detect");
+        this.setState({[input]: event.target.value});
+        console.log(this.state.lastname);
+        event.preventDefault();
       }
+     
     
       //exec when user click on button
-      lastName() {
-        var lastname = this.state.value;
-      }
   
   componentDidMount() {
   }
+
+  addOwner = (e) => {
+     var fn = this.state.lastname;
+    console.log("added owner");
+    console.log(fn);
+    const url = 'http://localhost:9999/api/v1/owners/add?firstName='+this.state.firstname+"&lastName="+this.state.lastname+"&address="+this.state.address+"&city="+this.state.city+"&telephone="+this.state.telephone;
+    axios.get(url);
+}
 
   render() {
     
@@ -43,25 +52,25 @@ export default class OwnerListPage extends Component {
         <Form>
         <FormGroup>
           <Label for="firstName">First Name</Label>
-          <Input type="text" name="firstName" id="firstName" placeholder="John" />
+          <Input type="text" name="firstName" id="firstName" placeholder="John" value={this.state.firstname} onChange={this.handleChange('firstname')}/>
         </FormGroup>
         <FormGroup>
           <Label for="lastName">Last Name</Label>
-          <Input type="text" name="lastName" id="lastName" placeholder="Doe" />
+          <Input type="text" name="lastName" id="lastName" placeholder="Doe" value={this.state.lastname} onChange={this.handleChange('lastname')}/>
         </FormGroup>
         <FormGroup>
           <Label for="address">Address</Label>
-          <Input type="text" name="address" id="address" placeholder="123 Main St" />
+          <Input type="text" name="address" id="address" placeholder="123 Main St" value={this.state.address} onChange={this.handleChange('address')}/>
         </FormGroup>
         <FormGroup>
           <Label for="city">City</Label>
-          <Input type="text" name="city" id="city" placeholder="Anytown" />
+          <Input type="text" name="city" id="city" placeholder="Anytown" value={this.state.city} onChange={this.handleChange('city')}/>
         </FormGroup>
         <FormGroup>
           <Label for="telephone">Telephone</Label>
-          <Input type="text" name="telephone" id="telephone" placeholder="0600000000" />
+          <Input type="text" name="telephone" id="telephone" placeholder="0600000000" value={this.state.telephone} onChange={this.handleChange('telephone')}/>
         </FormGroup>
-        <Button>Submit</Button>
+        <a href="/owners/add"><Button onClick={this.addOwner}>Submit</Button></a>
       </Form>
       </div>
       <div class="col-sm-2"></div>

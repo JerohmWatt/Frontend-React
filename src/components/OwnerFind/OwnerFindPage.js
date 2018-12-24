@@ -9,7 +9,6 @@ export default class OwnerFindPage extends Component {
     super(props);
     this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
-    this.lastName = this.lastName.bind(this);
   }
 
   //when change on textbox, update value
