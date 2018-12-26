@@ -18,6 +18,8 @@ Rentrer dans petclinic-react
 
 `$npm install --save reactstrap react react-dom`
 
+`$npm install axios`
+
 `$ yarn add react-router`
 
 `$ yarn add react-router-dom`
