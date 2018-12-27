@@ -5,7 +5,15 @@ import { InputGroup, InputGroupText, InputGroupAddon, Input, Card, Button, Row, 
 
 export default class OwnerShowPage extends Component { 
   
-  state = { owners:[] } //taleau de vets stocké dans le
+  state = { owners:[] } //taleau de vets stocké dans le state
+  //ownerId !
+
+  constructor(props) {
+    super(props);
+    this.ownerId= 0;
+    this.lastname='';
+}
+
 
   getOwners = async() => {
     
@@ -25,6 +33,7 @@ export default class OwnerShowPage extends Component {
       let owners = []
       console.log(response)
       response.data.forEach(owner => {
+        this.setState({ ownerId: owner.ownerId, lastname: owner.lastName });
         owners.push(
           <Owners key={owner.lastname} {...owner}/>
         )
@@ -33,9 +42,11 @@ export default class OwnerShowPage extends Component {
       this.setState({owners})
     })
   }
+
   componentDidMount() {
     this.setOwners()
   }
+
 
   render() {
     return (
@@ -59,7 +70,7 @@ export default class OwnerShowPage extends Component {
         </div>
         </div>
       </div>
-      <Button style={{marginLeft: 1 + 'em'}}>Add New Pet</Button>
+      <a href={"/pet/add/"+this.state.ownerId+"/"+this.state.lastname}><Button style={{marginLeft: 1 + 'em'}}>Add New Pet</Button></a>
       <br />
       <div class="row">
   <div class="col-9">

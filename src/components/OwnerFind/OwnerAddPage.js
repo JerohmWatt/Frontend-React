@@ -27,9 +27,6 @@ export default class OwnerListPage extends Component {
   }
 
   addOwner = (e) => {
-     var fn = this.state.lastname;
-    console.log("added owner");
-    console.log(fn);
     const url = 'http://localhost:9999/api/v1/owners/add?firstName='+this.state.firstname+"&lastName="+this.state.lastname+"&address="+this.state.address+"&city="+this.state.city+"&telephone="+this.state.telephone;
     axios.get(url);
 }

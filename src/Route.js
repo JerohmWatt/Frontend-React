@@ -9,6 +9,7 @@ import Menu from './components/Menu/Menu'
 import OwnerListPage from './components/OwnerFind/OwnerListPage';
 import OwnerAddPage from './components/OwnerFind/OwnerAddPage';
 import OwnerShowPage from './components/OwnerFind/OwnerShowPage';
+import addPet from './components/NewPet/addPet';
 
 export default () => 
 (<BrowserRouter>
@@ -23,6 +24,7 @@ export default () =>
             <Route path="/owners/list" component={OwnerListPage} />
             <Route path="/owners/add" component={OwnerAddPage} />
             <Route path="/owners/show/:id" component={OwnerShowPage} />
+            <Route path="/pet/add/:id/:lastname" component={addPet} />
             <Route component={ErrorPage} />
         </Switch>
     </div>
