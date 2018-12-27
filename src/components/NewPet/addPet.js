@@ -26,9 +26,19 @@ export default class addPet extends Component {
   }
 
   addPet = (e) => {
-    const url = 'localhost:9999/api/v1/pets/new/'+this.props.match.params.id+'?name='+this.state.name+'&birthDate='+this.state.birthDate+'&type='+this.state.type; //ICI AJOUTER URL APIREST
-    axios.get(url);
-    alert(url);
+    const chemin = 'http://localhost:9999/api/v1/pets/new/'+this.props.match.params.id+'?name='+this.state.name+'&birthDate='+this.state.birthDate+'&type='+this.state.type; //ICI AJOUTER URL APIREST
+    alert(chemin);
+    axios.get(chemin).then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
 }
 
   render() {
