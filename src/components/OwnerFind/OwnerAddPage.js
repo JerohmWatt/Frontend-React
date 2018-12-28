@@ -29,6 +29,7 @@ export default class OwnerListPage extends Component {
   addOwner = (e) => {
     const url = 'http://localhost:9999/api/v1/owners/add?firstName='+this.state.firstname+"&lastName="+this.state.lastname+"&address="+this.state.address+"&city="+this.state.city+"&telephone="+this.state.telephone;
     axios.get(url);
+    window.location.href = "/owners/add";
 }
 
   render() {
@@ -67,7 +68,7 @@ export default class OwnerListPage extends Component {
           <Label for="telephone">Telephone</Label>
           <Input type="text" name="telephone" id="telephone" placeholder="0600000000" value={this.state.telephone} onChange={this.handleChange('telephone')}/>
         </FormGroup>
-        <a href="/owners/add"><Button onClick={this.addOwner}>Submit</Button></a>
+       <Button onClick={this.addOwner}>Submit</Button>
       </Form>
       </div>
       <div class="col-sm-2"></div>

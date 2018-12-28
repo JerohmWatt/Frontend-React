@@ -39,6 +39,7 @@ export default class addPet extends Component {
       .then(function () {
         // always executed
       });
+      window.location.href = "/owners/show/"+this.props.match.params.lastname;
 }
 
   render() {
@@ -70,7 +71,7 @@ export default class addPet extends Component {
           <Label for="type">Type</Label>
           <Input type="text" name="type" id="type" placeholder="Bird" value={this.state.type} onChange={this.handleChange('type')}/>
         </FormGroup>
-        <a href={"/owners/show/"+this.props.match.params.lastname}><Button onClick={this.addPet}>Submit</Button></a>
+        <Button onClick={this.addPet}>Submit</Button>
       </Form>
       </div>
       <div class="col-sm-2"></div>
