@@ -6,9 +6,9 @@ import OwnerFindPage from './components/OwnerFind/OwnerFindPage';
 import VetsPage from './components/Vets/VetsPage';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Menu from './components/Menu/Menu'
-import OwnerListPage from './components/OwnerFind/OwnerListPage';
-import OwnerAddPage from './components/OwnerFind/OwnerAddPage';
-import OwnerShowPage from './components/OwnerFind/OwnerShowPage';
+import OwnerListPage from './components/OwnerList/OwnerListPage';
+import OwnerAddPage from './components/OwnerAdd/OwnerAddPage';
+import OwnerShowPage from './components/OwnerShow/OwnerShowPage';
 import addPet from './components/NewPet/addPet';
 
 export default () => 

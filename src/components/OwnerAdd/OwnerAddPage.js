@@ -1,14 +1,12 @@
 import axios from 'axios' 
-import Owner from './Owner' //
 import React, { Component } from 'react'
-import { InputGroup, InputGroupText, InputGroupAddon, Button, Form, FormGroup, Label, Input, FormText, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Route, Redirect } from 'react-router'
+import { Button, Form, FormGroup, Label, Input, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 export default class OwnerListPage extends Component { 
   
     constructor(props) {
         super(props);
-        this.state = {firstname: '', lastname: '', address : '', city: '', address: ''};
+        this.state = {firstname: '', lastname: '', address : '', city: ''};
         this.handleChange = this.handleChange.bind(this);
       }
     
@@ -26,7 +24,7 @@ export default class OwnerListPage extends Component {
   componentDidMount() {
   }
 
-  addOwner = (e) => {
+  addOwner = () => {
     const url = 'http://localhost:9999/api/v1/owners/add?firstName='+this.state.firstname+"&lastName="+this.state.lastname+"&address="+this.state.address+"&city="+this.state.city+"&telephone="+this.state.telephone;
     axios.get(url);
     window.location.href = "/owners/add";

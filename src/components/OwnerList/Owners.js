@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Owners = ({lastName,firstName,address,city,telephone,pets}) => {
+const Owners = ({lastName,firstName,address,city,telephone}) => {
     return (
         <tbody>
         <tr>
