@@ -27,7 +27,6 @@ export default class addPet extends Component {
       this.state.birthDate +
       "&type=" +
       this.state.type; 
-    alert(chemin);
     axios
       .get(chemin)
       .then(function(response) {
@@ -41,7 +40,7 @@ export default class addPet extends Component {
       .then(function() {
         // always executed
       });
-    window.location.href = "/owners/show/" + this.props.match.params.lastname;
+    window.location.href = "/owners/show/" + this.props.match.params.id +"/"+ this.props.match.params.lastname;
   };
 
   render() {

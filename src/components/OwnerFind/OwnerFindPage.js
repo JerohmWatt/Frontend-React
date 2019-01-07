@@ -41,7 +41,7 @@ export default class OwnerFindPage extends Component {
                 </InputGroup>
                 <br />
                 <a href={"/owners/list/" + this.state.value}>
-                  <Button color="success" size="lg" onClick={this.lastName}>
+                  <Button color="success" size="lg" >
                     Find owner(s)
                   </Button>{" "}
                 </a>

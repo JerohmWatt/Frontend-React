@@ -18,7 +18,7 @@ export default class OwnerListPage extends Component {
           this.props.match.params.id +
           '"'
       );
-      return await response;
+      return response;
     }
   };
 

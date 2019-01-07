@@ -2,10 +2,10 @@ import axios from "axios";
 import Owners from "../OwnerList/Owners"; //
 import React, { Component } from "react";
 import { Button, Breadcrumb, BreadcrumbItem } from "reactstrap";
-import PetAndVisits from "./PetAndVisits";
+import Pet from "./Pet"
 
 export default class OwnerShowPage extends Component {
-  state = { owners: [], petsAndVisits: [] };
+  state = { owners: [], pets: [] };
 
   constructor(props) {
     super(props);
@@ -14,14 +14,14 @@ export default class OwnerShowPage extends Component {
   }
 
   getOwners = async () => {
-    console.log(this.props.match);
-    if (this.props.match.params.id === undefined) {
-      //error ? car page pour info et rien reçu
+    //console.log(this.props.match);
+    if (this.props.match.params.name === undefined) {
+      alert("ici");
     } else {
       //if user enter lastname
       const response = await axios.get(
         'http://localhost:9999/api/v1/owners/"' +
-          this.props.match.params.id +
+          this.props.match.params.name +
           '"'
       );
       return await response;
@@ -31,54 +31,56 @@ export default class OwnerShowPage extends Component {
   setOwners = () => {
     this.getOwners().then(response => {
       let owners = [];
-      console.log(response);
+      //console.log(response);
       response.data.forEach(owner => {
-        this.setState({ ownerId: owner.ownerId, lastname: owner.lastName });
+        this.setState({ ownerId: owner.ownerId, lastname: owner.lastName});
         owners.push(<Owners key={owners} {...owner} />);
       });
-      console.log(owners);
+      //console.log(owners);
       this.setState({ owners });
     });
   };
 
   // pets and visits
 
-  getPetsAndVisits = async () => {
-    console.log(this.props.match);
+  getPets = async () => {
+    //console.log(this.props.match);
     if (this.props.match.params.id === undefined) {
-      //error ? car page pour info et rien reçu
+      
     } else {
       //if user enter lastname
-      const response = await axios.get(
-        'http://localhost:9999/api/v1/owners/"' +
-          this.props.match.params.id +
-          '"'
-      ); //url a modif pour nouvelle requête
-      return await response;
+      const response2 = await axios.get(
+        'http://localhost:9999/api/v1/pets/' +
+          this.props.match.params.id 
+          
+      );
+      console.log(response2); //url a modif pour nouvelle requête
+      return await response2;
+      
     }
   };
 
-  setPetsAndVisits = () => {
-    this.getPetsAndVisits().then(response => {
-      let petsAndVisits = [];
-      console.log(response);
-      response.data.forEach(pet => {
+  setPets = () => {
+    this.getPets().then(response2 => {
+      let pets = [];
+      //console.log(response2);
+      response2.data.forEach(pet => {
         this.setState({
           name: pet.name,
-          birthdate: pet.birthdate,
+          birthDate: pet.birthDate,
           type: pet.type,
-          lastvisitdate: pet.lastvisitdate,
-          lastvisitdesc: pet.lastvisitdesc
+          petId:  pet.id,
         });
-        petsAndVisits.push(<PetAndVisits key={pet.name} {...pet} />);
+        pets.push(<Pet key={pet.name} {...pet} />);
       });
-      console.log(petsAndVisits);
-      this.setState({ petsAndVisits });
+      console.log(pets);
+      this.setState({ pets });
     });
   };
 
   componentDidMount() {
     this.setOwners();
+    this.setPets();
   }
 
   render() {
@@ -113,12 +115,18 @@ export default class OwnerShowPage extends Component {
           <div className="col-9">
             <div className="container xd-container">
               <br />
-              <h2>Pets and Visits</h2>
+              <h2>Pets</h2>
               <br />
               <table className="table table-striped">
-                <thead />
-                <tbody />
-              </table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Birthdate</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>{this.state.pets}</tbody>
+          </table>
             </div>
           </div>
         </div>
